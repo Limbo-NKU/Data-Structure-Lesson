@@ -11,5 +11,5 @@ Achieve multiplication and division.
 Key Point:
 Every node in the list should be performed as below:
 Every node should arranged either by increasing powers or decreasing powers.
-The polynomial which restores the result should uses the original polynomial's place,not a new one.
+The polynomial which storages the result should uses the original polynomial's place,not a new one.
 To be continue...
