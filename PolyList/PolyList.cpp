@@ -325,14 +325,14 @@ int main()
 	while (input)
 	{
 		ProcessNum++;//总运算次数累加
-		output << "第"<<ProcessNum<<"次运算" << endl;
+		output << "Processing #"<<ProcessNum<<" calculation." << endl;
 		list<pair<int, int>> Poly1, Poly2;
 		bool Input1, Input2;
 		Input1 = Input(input, Poly1);
 		Input2 = Input(input, Poly2);
 		if (Input1 == false || Input2 == false)
 		{
-			output << "输入多项式出错"<<endl;
+			output << "Input polynomial error."<<endl;
 			return 0;
 		}
 		string OperFlag;
@@ -340,60 +340,60 @@ int main()
 		bool OperSucc, OutSucc;
 		if (OperFlag == "AND(#,#)")
 		{
-			output << "进行运算：加法" << endl << "结果为："<<endl;
+			output << "Calculating:Addition." << endl << "The result is:"<<endl;
 			OperSucc = AND(Poly1, Poly2);
 			OutSucc = OutPut(output, Poly1);
 		}
 		if (OperFlag == "SUB(#,#)")
 		{
-			output << "进行运算：减法" << endl << "结果为：" << endl;
+			output << "Calculating:Subtraction." << endl << "The result is:" << endl;
 			OperSucc = SUB(Poly1, Poly2);
 			OutSucc = OutPut(output, Poly1);
 		}
 		if (OperFlag == "MUL(#,#)")
 		{
-			output << "进行运算：乘法" << endl << "结果为：" << endl;
+			output << "Calculating:Multiplication." << endl << "The result is:" << endl;
 			OperSucc = MUL(Poly1, Poly2);
 			OutSucc = OutPut(output, Poly1);
 		}
 		if (OperFlag == "DIV(#,#)")
 		{
-			output << "进行运算：除法" << endl;
+			output << "Calculating:Division." << endl;
 			bool IsClear;
 			list<pair<Fraction , int>> Result, Minus;
 			OperSucc = DIV(Poly1, Poly2, IsClear,Result,Minus);
 			if (IsClear) 
 			{ 
-				output << "多项式已除尽，结果为："<<endl;
+				output << "The polynomial is divisible.The result is:"<<endl;
 				OutSucc = OutPut(output, Result); 
 			}
 			else 
 			{ 
-				output << "多项式未除尽，结果为：" << endl;
+				output << "The polynomial is not divisible.The result is:" << endl;
 				bool Output1 = OutPut(output, Result);
-				output << "余式为：" << endl;
+				output << "The remainder is:" << endl;
 				bool Output2 = OutPut(output,Minus);
 				OutSucc = Output1 && Output2; 
 			}
 		}
 		if (OperFlag == "DIFF(#,#)")
 		{
-			output << "进行运算：微分" << endl;
+			output << "Calculating:Differentiation" << endl;
 			OperSucc = DIFF(Poly1) && DIFF(Poly2);
-			output << "第一个多项式微分结果为：" << endl;
+			output << "The first differentiation result is:" << endl;
 			bool output1 = OutPut(output, Poly1);
-			output << "第二个多项式微分结果为：" << endl;
+			output << "The second differentiation result is:" << endl;
 			bool output2 = OutPut(output, Poly2);
 			OutSucc = output1 && output2;
 		}
 		if (OperSucc == false)
 		{
-			output << "计算操作错误"<<endl;
+			output << "Calculate operation error."<<endl;
 			return 0;
 		}
 		if (OutSucc == false)
 		{
-			output << "输出多项式出错"<<endl;
+			output << "Outputting polynomial error."<<endl;
 			return 0;
 		}
 		input.get();
